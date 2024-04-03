@@ -49,6 +49,7 @@ namespace HomeWork_5_6
             return anketa;
         }
 
+        // Сортировка. Не помню и не нашёл в каком модуле изучали TryParse, поэтому взял из подсказки
         static bool CheckNum(string number, out int corrnumber)
         {
             if (int.TryParse(number, out int intnum))
