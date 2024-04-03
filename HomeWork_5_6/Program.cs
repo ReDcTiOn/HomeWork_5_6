@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -25,8 +26,16 @@ namespace HomeWork_5_6
             Console.Write("Введите фамилию: ");
             anketa.LastName = Console.ReadLine();
 
-            Console.Write("Введите возраст: ");
-            anketa.Age = int.Parse(Console.ReadLine());
+
+            string age;
+            int intage;
+            do
+            {
+                Console.Write("Введите возраст: ");
+                age = Console.ReadLine();
+
+            } while (CheckNum(age, out intage));
+            anketa.Age = intage;
 
             // Есть ли животные, их количество и имена
             anketa.PetNames = Pets();
@@ -40,15 +49,39 @@ namespace HomeWork_5_6
             return anketa;
         }
 
+        static bool CheckNum(string number, out int corrnumber)
+        {
+            if (int.TryParse(number, out int intnum))
+            {
+                if (intnum > 0)
+                {
+                    corrnumber = intnum;
+                    return false;
+
+                }
+            }
+                {
+                    corrnumber = 0;
+                    return true;
+                }
+        }
+
         // Запрос наличие питомца, их количество и список
         static string[] Pets()
         {
             Console.Write("У вас есть питомец? (Да/Нет): ");
-            if (Console.ReadLine() == "Да")
+            string YesNo = Console.ReadLine();
+            if (YesNo == "Да" || YesNo == "да")
             {
-                Console.Write("Введите количество питомцев: ");
-                int petCount = int.Parse(Console.ReadLine());
-                if (petCount > 1)
+                string pet;
+                int inrage;
+                do
+                {
+                    Console.Write("Введите количество питомцев: ");
+                    pet = Console.ReadLine();
+                } while (CheckNum(pet, out inrage));
+                int petCount = inrage;
+                if (petCount >= 1)
                 {
                     string[] PetMassiv = new string[petCount];
 
@@ -70,7 +103,7 @@ namespace HomeWork_5_6
         {
             Console.Write("Введите количество любимых цветов: ");
             int colorsCount = int.Parse(Console.ReadLine());
-            if (colorsCount > 1)
+            if (colorsCount >= 1)
             {
                 string[] ColorMassiv = new string[colorsCount];
 
