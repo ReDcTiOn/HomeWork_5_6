@@ -34,12 +34,13 @@ namespace HomeWork_5_6
             // Количество любимых цветов и их список
             anketa.FavColors = Colors();
 
-            OutText();
-            //Console.ReadKey();
+            // Вывод всех данных
+            OutText(anketa.Name, anketa.LastName, anketa.Age, anketa.PetNames, anketa.FavColors);
+
             return anketa;
         }
 
-
+        // Запрос наличие питомца, их количество и список
         static string[] Pets()
         {
             Console.Write("У вас есть питомец? (Да/Нет): ");
@@ -64,6 +65,7 @@ namespace HomeWork_5_6
             return null;
         }
 
+        // Запрос кол-во любимых цветов и их заполнение
         static string[] Colors()
         {
             Console.Write("Введите количество любимых цветов: ");
@@ -82,23 +84,25 @@ namespace HomeWork_5_6
             return null;
         }
 
-        static string OutText()
+        // Вывод всех данных после заполнения
+        static string OutText(string Name, string LastName, int Age, string[] PetNames, string[] FavColors)
         {
-            Console.WriteLine("Добро пожаловать {0} {0}", GetAnketa().Name, GetAnketa().LastName);
+            Console.WriteLine("Добро пожаловать {0} {0}", Name, LastName);
 
-            Console.WriteLine("На сегодняшний день вам {0} лет", GetAnketa().Age);
-
+            Console.WriteLine("На сегодняшний день вам {0} лет", Age);
             Console.WriteLine("Список ваших животных: ");
-            for (int i = 0; GetAnketa().PetNames.Length > 1; i++)
+            for (int i = 0; i < PetNames.Length; i++)
             {
-                Console.WriteLine(GetAnketa().PetNames[i]);
+                Console.WriteLine(PetNames[i]);
             }
 
             Console.WriteLine("Список ваших любимых цветов: ");
-            for (int i = 0; GetAnketa().FavColors.Length > 1; i++)
+            for (int i = 0; i < FavColors.Length; i++)
             {
-                Console.WriteLine(GetAnketa().FavColors[i]);
+                Console.WriteLine(FavColors[i]);
             }
+
+            Console.ReadKey();
 
 
             return null;
