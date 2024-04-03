@@ -75,13 +75,13 @@ namespace HomeWork_5_6
             if (YesNo == "Да" || YesNo == "да")
             {
                 string pet;
-                int inrage;
+                int intage;
                 do
                 {
                     Console.Write("Введите количество питомцев: ");
                     pet = Console.ReadLine();
-                } while (CheckNum(pet, out inrage));
-                int petCount = inrage;
+                } while (CheckNum(pet, out intage));
+                int petCount = intage;
                 if (petCount >= 1)
                 {
                     string[] PetMassiv = new string[petCount];
@@ -102,8 +102,14 @@ namespace HomeWork_5_6
         // Запрос кол-во любимых цветов и их заполнение
         static string[] Colors()
         {
-            Console.Write("Введите количество любимых цветов: ");
-            int colorsCount = int.Parse(Console.ReadLine());
+            string color;
+            int intage;
+            do
+            {
+                Console.Write("Введите количество любимых цветов: ");
+                color = Console.ReadLine();
+            } while (CheckNum(color,out intage));
+            int colorsCount = intage;
             if (colorsCount >= 1)
             {
                 string[] ColorMassiv = new string[colorsCount];
